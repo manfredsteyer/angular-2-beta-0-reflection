@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Flüge suchen!</h1>
+    <form>
+        
+        <div class="form-group">
+            <label>Von:</label>
+            <input class="form-control" [(ngModel)]="von">
+        </div>
+
+        <div class="form-group">
+            <label>Nach:</label>
+            <input class="form-control" [(ngModel)]="nach">
+        </div>
+
+        <div class="form-group">
+            <input class="btn" value="Suchen!" type="button" (click)="suchen()">
+        </div>
+
+    </form>
+    
+    <table class="table table-striped" [hidden]="fluege.length == 0">
+        <tr *ngFor="#f of fluege" [class.active]="f == selectedFlug">
+            <td>{{f.id}}</td>
+            <td>{{f.datum.substr(0,10)}} </td>
+            <td>{{f.abflugort}}</td>
+            <td>{{f.zielort}}</td>
+            <td><a href="#" (click)="select(f)">Auswählen</a></td>
+        </tr>
+    </table>    
+        
+    
+</div>
